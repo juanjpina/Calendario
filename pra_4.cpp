@@ -8,84 +8,14 @@
 
 #include<stdio.h>
 #include<ctype.h>
-#include<string.h>
-int p;
 
-int menu,i;
-int dia,mes,anno;
-int nuevo_mes;
-
-const int dias=10; //constantes de array actividades
-const int carac=1001;
-
-typedef char tabla[dias][carac];//array para actividades
-tabla actividades;
-
-typedef char descanso[26]; //array para comprobar descanso
-descanso pal="Dia de descanso.";
-int ndia,nmes,nanno;
-int n_dia,n_mes,n_anno;//variables calendario numero 2
-int estado,estados;
-//estado=Buscar_Estado(contD,mes,anno);
-/* variables calendario*/
-//int dia,mes,anno;
-int b,z,x;
+int dia,mes,anno,z,x;
+int b;
 int contD;
 int dia1;
-int d=0;
-int c=0;
-/*--------------------*/
 
 
-void Grabar_actividades(const tabla actividades){ //1. funcion para grabar array
-//const int dias=10;
-//const int carac=5;
-//typedef char tabla[dias][carac];
 
-    for(int i=0; i<dias; i++){
-         printf("Actividad del dia %d? ",i+1);
-          fflush(stdin);
-          scanf("%[^\n]c",&actividades[i]);
-
-          }
-           //printf("%d\n",strlen(actividades[i]));
-          if((strlen(actividades[i]))>=carac){
-                 // printf("%d",strlen(actividades[i]));
-            i--;}
-            //printf("%d",strlen(actividades[i]));
-
-  }//void
-
- void Mostrar_Actividades(const tabla actividades){ //2.funcion para mostrar array
-    for(int i=0; i<dias; i++){
-
-    if(i<=9){
-        printf("Dia%d\n",i+1);
-        printf("====\n");
-        printf("%s\n", actividades[i]);}
-
-      else {printf("Dia%d\n",i+1);
-        printf("======\n");
-        printf("%s\n\n", actividades[i]);}
-    }
-  }//void
-
-int fecha(int xdia, int xmes, int xanno){//3.funcion para recoger fecha inicio depostes
-        printf("Dia?");
-        scanf("%d",&dia);
-        printf("\n");
-        printf("Mes?");
-        scanf("%d",&mes);
-        printf("\n");
-        printf("Anno?");
-        scanf("%d",&anno);
-        return dia;
-        return mes;
-        return anno;
-  }//void
-
-
-/*-------calendario----------------*/
 
 int CalculoDeDias(int mes, int anno){
   switch(mes){ //calculo de los dias en los meses
@@ -153,8 +83,11 @@ int DiaSemana (int anno, int mes) {//lunes=1..domingo=7
   if (dia1==0) {
     dia1=7;
   }
+
   return dia1;
 }
+
+
 
 int LineasCalendario(int mes, int anno){  //para indicar cuantos semanas tiene el mes.
 
@@ -178,142 +111,54 @@ int LineasCalendario(int mes, int anno){  //para indicar cuantos semanas tiene e
 
 
 
-int Buscar_Estado(int busca_dia,int busca_mes,int busca_anno,int p){//imprime numero o letra
-
-if ((busca_dia>=dia) && (busca_dia<=dia+9) && (mes==busca_mes) && (anno==busca_anno)){
-    if(strcmp((actividades[p]),pal)==0){
-                      return 55;
-                }else{
-                      return 66;
-                      }
-}
-else{
-  return busca_dia;
-}
-}//int
-
-
-
-int NuevoCalendario(int ndia, int nmes, int nanno){
-
-  if (contD>=CalculoDeDias(mes,anno)){
-
-        mes=mes+1;
-        nuevo_mes=mes+1;
-
-
-
-        printf("nuevo mes");
-
-      if(mes>=12){
-
-      anno=anno+1;
-          printf("nuev ano");
-        }
-      }
-
-}
-
-int Nuevo_Buscar_Estado(int buscar_dia,int buscar_mes,int buscar_anno,int nuevo_mes,int p){
-
- if((buscar_dia>=dia) && (buscar_dia<=dia+9) && (p<=9) ){
-
-      if(strcmp((actividades[p]),pal)==0){
-                      return 55;
-
-                }else{
-                      return 66;
-                      }
-
-
-      }
-
-
-
-
-
-else{
-  return buscar_dia;
-}
-
-}//int
-
-
-
-
-
-
-
 int main(){
 
-do{
+            printf("%cMes (1....12)?",168);
+            scanf("%d",&mes);
 
-printf("1. Introducir plan de entrenamiento\n");
-printf("2. Listar plan de entrenamiento\n");
-printf("3. Introducir fecha de inicio del plan\n");
-printf("4. Mostrar plan en el calendario\n");
-printf("5. Salir del programa\n");
-scanf("%d",&menu);
+            printf("%cA%co(1601....3000)?",168,164);
+            scanf("%d",&anno);
+            printf("\n");
 
 
-
-  switch(menu){
-    case 1:
-      Grabar_actividades(actividades);
-      break;
-
-    case 2:
-      Mostrar_Actividades(actividades);
-      break;
-
-    case 3:
-   
-        fecha(dia,mes,anno);
-        p=0;
-      break;
-
-    case 4:
 
         if((anno>=1601)&&(anno<=3000)&&(mes>=1)&&(mes<=12)){
-            printf("dia %d",dia);
+
             Mes_ano(mes); printf("             %4d\n",anno);
             printf("===========================\n");
             printf("LU  MA  MI  JU  VI | SA  DO\n");
             printf("===========================\n");
 
-  contD=0;
-  z=1;
-i=0;
+
+contD=0;
+z=1;
 
 for (int y=1; y<=LineasCalendario(mes,anno); y++){
+
+
+
          if(((DiaSemana(anno,mes))!=7)&& (y==1)){
+
                     for(int b=1; b<=(DiaSemana(anno,mes)); b++){
                         if(b==5){printf(" . ");}
+
                         else { printf(" .  ");}
                         z=z+4;
                         if (z==21){printf("| ");}
-                    }//for
-           }//if
+                    }
+           }
 
 
-        for (int x=z;x<=27;x++){
+
+                  for (int x=z;x<=27;x++){
                             if ((x-1)%4==0){
+                              if(contD<=(CalculoDeDias(mes,anno))-1){
+                                  contD++;
+                                  printf("%2d",contD);}
+                                    else{printf(" .");}
+                                  }
 
-                                   if(contD<=(CalculoDeDias(mes,anno))-1){
-                                     contD++;
-                                      estado=Buscar_Estado(contD,mes,anno,p);
-                                      if (estado==55)
-                                       {printf (" D");p++;}
-                                      else if (estado==66)
-                                      { printf (" C");p++;}
-                                      else
-                                      {printf("%2d",estado);}
-
-                                    }
-                                     else{
-                                      printf(" .");}}
-
-                                   else if (x==18 ){
+                                  else if (x==18 ){
                                     printf(" |");}
 
                                    else if (x==19){
@@ -322,92 +167,18 @@ for (int y=1; y<=LineasCalendario(mes,anno); y++){
                                    else if (((x-1)%4==2)){
                                     printf("  ");}
 
-                                  
+                                   else if ((x-1)%4==2){
+                                    printf("");
+
+                                  }else if((x==13)){
+                                    printf("");
+                                  }
+                                   else if((x==20)){
+                                              ;}
+                                   else {
+                                    printf("");
                                    }
-
-
-
-
-printf("\n");
-z=1;
-}//for
- }//if
-
-
- //NUEVO CALENDARIO--------------------------------------
-if(p<9){
-
-        if (contD>=CalculoDeDias(mes,anno)){
-                nuevo_mes=mes+1;
-                mes=mes+1;
-
-                printf("nuevo mes");
-
-              if(mes==13){
-
-                anno=anno+1;
-                mes=1;
-                  printf("nuev ano");
-                }
-              }//if
-
-
-
-
-
-
- printf("\n");
-    dia=1;
-    if((anno>=1601)&&(anno<=3000)&&(mes>=1)&&(mes<=12)){
-            printf("dia %d",dia);
-            Mes_ano(mes); printf("             %4d\n",anno);
-            printf("===========================\n");
-            printf("LU  MA  MI  JU  VI | SA  DO\n");
-            printf("===========================\n");
-
-  contD=0;
-  z=1;
-i=0;
-
-for (int y=1; y<=LineasCalendario(mes,anno); y++){
-         if(((DiaSemana(anno,mes))!=7)&& (y==1)){
-                    for(int b=1; b<=(DiaSemana(anno,mes)); b++){
-                        if(b==5){printf(" . ");}
-                        else { printf(" .  ");}
-                        z=z+4;
-                        if (z==21){printf("| ");}
                     }//for
-           }//if
-
-        for (int x=z;x<=27;x++){
-        if ((x-1)%4==0){
-
-               if(contD<=(CalculoDeDias(mes,anno))-1){
-                 contD++;
-                  estados=Nuevo_Buscar_Estado(contD, mes, anno,nuevo_mes,p);
-                  if (estados==55)
-                   {printf (" D");p++;}
-                  else if (estados==66)
-                  { printf (" C");p++;}
-                  else
-                  {printf("%2d",estados);}
-
-                }
-                 else{
-                  printf(" .");}}
-
-               else if (x==18 ){
-                printf(" |");}
-
-               else if (x==19){
-                printf(" ");}
-
-               else if (((x-1)%4==2)){
-                printf("  ");}
-
-              
-               }
-
 
 
 
@@ -415,15 +186,4 @@ printf("\n");
 z=1;
 }//for
  }
-}//if condicion de entrar
-
-
-
-
-
-
-    break;
-    default:;
-    }//switch
- }while(menu!=5);
-}//int main
+}
