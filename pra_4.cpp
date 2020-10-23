@@ -267,14 +267,7 @@ scanf("%d",&menu);
       break;
 
     case 3:
-   /*     printf("Dia?");
-        scanf("%d",&dia);
-        printf("\n");
-        printf("Mes?");
-        scanf("%d",&mes);
-        printf("\n");
-        printf("Anno?");
-        scanf("%d",&anno);*/
+   
         fecha(dia,mes,anno);
         p=0;
       break;
@@ -302,70 +295,6 @@ for (int y=1; y<=LineasCalendario(mes,anno); y++){
                     }//for
            }//if
 
-//prueba 1--------------------------------------------------------
-
-  //for (int x=z; x<=27; x++){
-
- //  if ((x-1)%4==0){
-            /*if(contD==dia || x>=27){
-           while(i<=dias-1){
-             if(contD<=CalculoDeDias(mes, anno)){
-
-              if((x-1)%4==0){
-                if(strcmp((actividades[i]),pal)==0){
-                      printf(" D");
-                      x++;
-                      i++;
-                      contD++;
-                }else{
-                      printf(" C");
-                      x++;
-                      i++;
-                      contD++;}
-                 }
-            if(x==26){
-                   printf("\n");x=1;}
-
-               else if (x==18 ){
-                      printf(" |");x++;}
-
-               else if (x==19){
-                      printf(" ");x++;}
-
-               else if (((x-1)%4==2)){
-                      printf("  ");
-                      x++;}
-               else if(i==dias){
-                 printf("  ");x++;}
-               else {
-                    x++;}
-              }
-              }//while
-
-              }//if contd*/
-
-
-            /*     if(contD<=(CalculoDeDias(mes,anno))-1){
-                   contD++;
-                  // if(x==19){printf(" ");}
-                   printf("%2d",Buscar_Estado(contD,mes,anno));}
-                   else{printf(" .");}
-       }//if x-1
-                       /*  else if(x==27){
-                          printf("\n");}*/
-
-                    /*     else if (x==18 ){
-                          printf(" |");}
-
-                         else if (x==19){
-                          printf(" ");}
-
-                         else if (((x-1)%4==2)){
-                          printf("  ");}
-
-        }*/
-
- //-----------------------------------------------------------------------------------------
 
         for (int x=z;x<=27;x++){
                             if ((x-1)%4==0){
@@ -393,17 +322,7 @@ for (int y=1; y<=LineasCalendario(mes,anno); y++){
                                    else if (((x-1)%4==2)){
                                     printf("  ");}
 
-                                  /* else if ((x-1)%4==2){
-                                    printf("");}*/
-
-                                 /* else if((x==13)){
-                                    printf("");}*/
-
-                                 /*  else if((x==20)){
-                                              ;}*/
-                                 /*  else {
-                                    printf("");}*/
-
+                                  
                                    }
 
 
@@ -486,17 +405,7 @@ for (int y=1; y<=LineasCalendario(mes,anno); y++){
                else if (((x-1)%4==2)){
                 printf("  ");}
 
-              /* else if ((x-1)%4==2){
-                printf("");}*/
-
-             /* else if((x==13)){
-                printf("");}*/
-
-             /*  else if((x==20)){
-                          ;}*/
-             /*  else {
-                printf("");}*/
-
+              
                }
 
 
